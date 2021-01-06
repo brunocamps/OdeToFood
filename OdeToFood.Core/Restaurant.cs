@@ -1,8 +1,7 @@
 ﻿using System;
 namespace OdeToFood.Core
 {
-
-    public class Restaurants
+    public class Restaurant
     {
         //Definition of the Data we will work with
         //including CuisineType which is a public enum
@@ -10,6 +9,5 @@ namespace OdeToFood.Core
         public string Name { get; set; }
         public string Location { get; set; }
         public CuisineType Cuisine { get; set; }
-
     }
 }
