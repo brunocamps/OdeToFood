@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using OdeToFood.Core;
 
 namespace OdeToFood.Data
 {
@@ -10,8 +11,13 @@ namespace OdeToFood.Data
 
     public class InMemoryRestaurantData : IRestaurantData
     {
+        public InMemoryRestaurantData()
+        {
+
+        }
         public IEnumerable<Restaurant> GetAll()
         {
             
         }
     }
+}
