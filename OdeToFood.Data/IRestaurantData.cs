@@ -18,7 +18,7 @@ namespace OdeToFood.Data
         {
             restaurants = new List<Restaurant>()
             {
-                //Warning: a list is not thread safe. It won't be able to process multiple requests.
+                //Warning: a list is not thread safe. It won't be able to process multiple requests
                 //populate the list with manual data 
                 new Restaurant {Id = 1, Name = "Scott's pizza", Location="Maryland", Cuisine = CuisineType.Italian},
                 new Restaurant {Id = 2, Name = "Cinnamon Club", Location="London", Cuisine = CuisineType.Indian},

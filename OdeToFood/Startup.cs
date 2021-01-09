@@ -25,6 +25,7 @@ namespace OdeToFood
         public void ConfigureServices(IServiceCollection services) //services and components needed
         {
             services.AddRazorPages();
+            //singleton: single instance of a specific service for the entire application
             services.AddSingleton<IRestaurantData, InMemoryRestaurantData>(); //only for development and test
         }
 
