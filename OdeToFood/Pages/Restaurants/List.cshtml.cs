@@ -17,10 +17,11 @@ namespace OdeToFood.Pages.Restaurants
         //page model: responsible for data access
         public string Message { get; set; }
 
-        public ListModel(IConfiguration config, IRestaurantData restaurantData)
+        public ListModel(IConfiguration config, IRestaurantData restaurantData) //razor page now has access
+            //to a component that knows how to fetch the restaurants
         {
-            this.config = config;
-            this.restaurantData = restaurantData;
+            this.config = config; //test this one
+            this.restaurantData = restaurantData; //test this one
         }
         
 
