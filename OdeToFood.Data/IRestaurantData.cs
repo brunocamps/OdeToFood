@@ -8,7 +8,7 @@ namespace OdeToFood.Data
     public interface IRestaurantData
     {
         //start with single operation to return an IEnumerable of Restaurant
-        IEnumerable<Restaurant> GetAll(); // method to get all restaurants
+        IEnumerable<Restaurant> GetRestaurantsByName(string name); // method to get all restaurants
     }
 
     public class InMemoryRestaurantData : IRestaurantData //implement IRestaurantData
@@ -29,9 +29,10 @@ namespace OdeToFood.Data
 
         }
 
-        public IEnumerable<Restaurant> GetAll()
+        public IEnumerable<Restaurant> GetRestaurantsByName(string name = null)
         {
             return from r in restaurants
+                   where string.IsNullOrEmpty(name) || r.Name.StartsWith(name)
                    orderby r.Name  //ascending order
                    select r;
         }
