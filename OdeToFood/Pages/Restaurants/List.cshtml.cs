@@ -20,6 +20,8 @@ namespace OdeToFood.Pages.Restaurants
         //What do we want to display in our view? Our Message and Our list of restaurants
         public string Message { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
 
         public ListModel(IConfiguration config, IRestaurantData restaurantData) //razor page now has access
             //to a component that knows how to fetch the restaurants
@@ -32,9 +34,9 @@ namespace OdeToFood.Pages.Restaurants
 
         public void OnGet(string searchTerm) //HTTP get request
         {
-           
+            
             Message = config["Message"];
-            Restaurants = restaurantData.GetRestaurantsByName(searchTerm);
+            Restaurants = restaurantData.GetRestaurantsByName(SearchTerm);
         }
     }
 }
