@@ -9,25 +9,25 @@ using OdeToFood.Data;
 
 namespace OdeToFood.Pages.Restaurants
 {
-    public class DetailModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly IRestaurantData restaurantData;
 
         public Restaurant Restaurant { get; set; }
 
-        public DetailModel(IRestaurantData restaurantData)
+        public EditModel(IRestaurantData restaurantData) //inject the data service
         {
             this.restaurantData = restaurantData;
         }
-
-        public IActionResult OnGet(int restaurantId) //strictly an input model
+        public IActionResult OnGet(int restaurantId)
         {
             Restaurant = restaurantData.GetById(restaurantId);
-            if (Restaurant == null) //id there's no restaurant id
+            if(Restaurant == null)
             {
                 return RedirectToPage("./NotFound");
             }
             return Page();
+
         }
     }
 }
