@@ -15,6 +15,7 @@ namespace OdeToFood.Pages.Restaurants
         private readonly IRestaurantData restaurantData;
         private readonly IHtmlHelper htmlHelper;
 
+        [BindProperty]
         public Restaurant Restaurant { get; set; }
 
         public IEnumerable<SelectListItem> Cuisines { get; set; }
@@ -25,7 +26,7 @@ namespace OdeToFood.Pages.Restaurants
             this.htmlHelper = htmlHelper;
             
         }
-        public IActionResult OnGet(int restaurantId)
+        public IActionResult OnGet(int restaurantId) //OnGet: responds to a GET request and gets the form into the page
         {
             Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
             Restaurant = restaurantData.GetById(restaurantId);
@@ -35,6 +36,20 @@ namespace OdeToFood.Pages.Restaurants
             }
             return Page();
 
+        }
+
+        public IActionResult OnPost() //method to return IActionResult
+        {
+            //make sure that the user's input is provided
+            if(ModelState.IsValid)
+            {
+                restaurantData.Update(Restaurant);
+                restaurantData.Commit();
+
+            }
+            //ASP.NET Core is stateless. We need to update.
+            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
+            return Page();
         }
     }
 }
